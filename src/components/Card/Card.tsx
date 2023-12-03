@@ -1,11 +1,13 @@
 import React from "react";
 import "./card.css";
+import { Tooltip } from "antd";
 
-type CardProps = {
+export type CardProps = {
   lesson: {
     title: string;
     place: string;
     weeks: number[];
+    extra_information?: string;
     time: Date;
     teacher: string;
   };
@@ -13,22 +15,42 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ lesson }) => {
   return (
-    <div className="Card">
-      <div className="color"></div>
-      <div>
-        <span>{lesson.title}</span>
-        <span>{lesson.place}</span>
-      </div>
-      <div>
-        <span>
-          {lesson.weeks.map((event, index) => (
-            <span key={index}>{event}</span>
-          ))}
-        </span>
-        <span>{lesson.time.toDateString()}</span>
-      </div>
-      <div>
-        <a href="">{lesson.teacher}</a>
+    <div className="card">
+      <div className="color purple"></div>
+      <div className="info">
+        <div className="card-title">
+          <span>
+            <b>{lesson.title}</b>
+          </span>
+          <span>
+            <b>{lesson.place}</b>
+          </span>
+        </div>
+        <div className="data">
+          <span>
+            Время:{" "}
+            <b>
+              {lesson.time.getHours()}:{lesson.time.getMinutes()}
+            </b>
+          </span>
+          <span>
+            Недели:
+            {lesson.weeks.map((event, index) => (
+              <span key={index}>
+                {event}
+                {index !== lesson.weeks.length - 1 ? ", " : ""}
+              </span>
+            ))}
+            {lesson.extra_information && (
+              <span> ({lesson.extra_information})</span>
+            )}
+          </span>
+        </div>
+        <div>
+          <Tooltip title="Teacher name" trigger="hover">
+            <button className="teacher-button">{lesson.teacher}</button>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );
@@ -37,10 +59,10 @@ const Card: React.FC<CardProps> = ({ lesson }) => {
 Card.defaultProps = {
   lesson: {
     title: "Default Title",
-    place: "Default Title",
+    place: "Default Place",
     weeks: [1, 2],
     time: new Date(),
-    teacher: "Default Title",
+    teacher: "Default Teacher",
   },
 };
 

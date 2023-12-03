@@ -1,4 +1,53 @@
-.Card {
-  border: 1px solid black;
+.card {
+  background-color: #f0f0f0ff;
   border-radius: 5px;
+  display: flex;
+  min-height: 100px;
+}
+.color {
+  min-width: 5px;
+  border-radius: 5px 0 0 5px;
+}
+
+.color.red {
+  background-color: red;
+}
+
+.color.green {
+  background-color: green;
+}
+
+.color.purple {
+  background-color: purple;
+}
+
+.info {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 5px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.teacher-button {
+  background-color: #f0f0f0ff;
+  min-width: 100px;
+  height: 20px;
+  color: black;
+  border: 1px solid #8baae8;
+  border-radius: 5px;
+}
+
+.teacher-button:hover {
+  background-color: #8baae8;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
 }
