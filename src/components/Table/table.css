@@ -1,0 +1,14 @@
+.table {
+  margin: auto;
+  margin-top: 50px;
+  width: 70rem;
+  height: 50rem;
+  background-color: #dcebfa;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+.day {
+  border: 1px solid black;
+}
